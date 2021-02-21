@@ -141,7 +141,22 @@ function showEntry() {
     )
 }
 // Creates table
-
+hourBlocks.forEach(function(thisTime) {
+    var timeRow = $("<form>").attr({"class": "row"});
+   // var timeHour = $("<div>").text('#${_thisTime.hour}').attr({"class": "hour"});
+    var timeEntry = $("<div>").attr({"class": ""});
+    var entryData = $("<textarea>");
+    entryData.attr("item", thisTime.item);
+    timeEntry.append(entryData);
+    $(".container").append(timeRow);
+    if(thisTime.hour < moment().format("HH")) {
+        entryData.attr({"class": "past"});
+    } else if(thisTime.hour === moment.format("HH")) {
+        entryData.attr({"class": "present"});
+    } else(thisTime.hour > moment().format("HH")) {
+        entryData.attr({"class": "future"});
+    }
+})
 
 // Show Entries if they exist/initiate page functions
 function init() {
