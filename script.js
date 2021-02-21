@@ -1,3 +1,4 @@
+// Global variable setup
 var hourBlocks = [
     {
         item: "0",
@@ -120,4 +121,32 @@ var hourBlocks = [
         entry: ""
     },
 ];
-var currentTime = moment().format("dddd, MM, Do, YYYY");
+var currentTime = moment().format("dddd, MMM Do YYYY");
+
+// Functions
+
+// Time on Header
+function headerTime() {
+    $("#currentDay").text(currentTime);
+}
+// Entries to local storage
+function localEntry() {
+    localStorage.setItem("hourBlocks", JSON.stringify(hourBlocks));
+}
+// Display entries to block
+function showEntry() {
+    hourBlocks.forEach(function (_thisTime) {
+        $('#${_thisTime.item}').val(_thisTime.entry);
+    }
+    )
+}
+// Creates table
+
+
+// Show Entries if they exist/initiate page functions
+function init() {
+    var storedEntry = JSON.parse(localStorage.getItem("hourBlocks"));
+    if (storedEntry) {
+        hourBlocks = storedEntry;
+    }
+}
