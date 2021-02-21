@@ -121,7 +121,7 @@ var hourBlocks = [
         entry: ""
     },
 ];
-var currentTime = moment().format("dddd, MMM Do YYYY");
+var currentTime = moment().format("dddd, MMM Do");
 
 // Functions
 
@@ -135,28 +135,28 @@ function localEntry() {
 }
 // Display entries to block
 function showEntry() {
-    hourBlocks.forEach(function (_thisTime) {
-        $('#${_thisTime.item}').val(_thisTime.entry);
+    hourBlocks.forEach(function (thisTime) {
+        $('#thisTime.item').val(thisTime.entry);
     }
     )
 }
 // Creates table
-hourBlocks.forEach(function(thisTime) {
-    var timeRow = $("<form>").attr({"class": "row"});
-   // var timeHour = $("<div>").text('#${_thisTime.hour}').attr({"class": "hour"});
-    var timeEntry = $("<div>").attr({"class": ""});
+hourBlocks.forEach(function (thisTime) {
+    var timeRow = $("<form>").attr({ "class": "row" });
+    //var timeHour = $("<div>").text('#thisTime.hour').attr({ "class": "hour" });
+    var timeEntry = $("<div>").attr({ "class": "" });
     var entryData = $("<textarea>");
     entryData.attr("item", thisTime.item);
     timeEntry.append(entryData);
     $(".container").append(timeRow);
-    if(thisTime.hour < moment().format("HH")) {
-        entryData.attr({"class": "past"});
-    } else if(thisTime.hour === moment.format("HH")) {
-        entryData.attr({"class": "present"});
-    } else(thisTime.hour > moment().format("HH")) {
-        entryData.attr({"class": "future"});
+    if (thisTime.hour < moment().format("HH")) {
+        entryData.attr({ "class": "past" });
+    } else if (thisTime.hour === moment().format("HH")) {
+        entryData.attr({ "class": "present" });
+    } else if (thisTime.hour > moment().format("HH")) {
+        entryData.attr({ "class": "future" });
     }
-})
+});
 
 // Show Entries if they exist/initiate page functions
 function init() {
@@ -164,4 +164,7 @@ function init() {
     if (storedEntry) {
         hourBlocks = storedEntry;
     }
+    localEntry();
+    showEntry();
 }
+init();
