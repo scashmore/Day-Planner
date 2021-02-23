@@ -11,7 +11,7 @@
 //         headerTime();
 
 //         $(".time-block").each(function () {
-//             var rowTime = parseInt($(this).attr("id").split("hour")[1]);
+//             var rowTime = parseInt($(this).attr("id"));
 
 //             if (rowTime < currentTime) {
 //                 $(this).addClass("past");
