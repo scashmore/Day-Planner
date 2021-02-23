@@ -6,6 +6,7 @@ function headerTime() {
 headerTime();
 
 //pull from storage 
+//Want to do a loop here? But this is okay?
 $("#entry1.description").val(localStorage.getItem("time"));
 $("#entry2.description").val(localStorage.getItem("time"));
 $("#entry3.description").val(localStorage.getItem("time"));
@@ -38,6 +39,6 @@ $(".time-block").each(function () {
 $(".saveBtn").on("click", function (event) {
     event.preventDefault();
     var entry = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id");
-    localStorage.setItem("time", JSON.stringify(entry));
+    //var time = $(this).parent().attr("id");
+    localStorage.setItem("time", entry);
 });
